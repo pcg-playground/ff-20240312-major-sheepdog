@@ -6,7 +6,7 @@ resource "azurerm_container_group" "example" {
   name                = "example-container-group"
   location            = data.azurerm_resource_group.example.location
   resource_group_name = data.azurerm_resource_group.example.name
-  ip_address_type     = "public"
+  ip_address_type     = "Public"
   dns_name_label      = "example-container-group"
   os_type             = "Linux" # Add the "os_type" attribute with a valid value
 
