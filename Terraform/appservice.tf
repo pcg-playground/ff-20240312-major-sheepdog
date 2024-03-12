@@ -1,16 +1,11 @@
-provider "azurerm" {
-  features {}
-}
-
-resource "azurerm_resource_group" "example" {
-  name     = "example-resource-group"
-  location = "West Europe"
+data "azurerm_resource_group" "example" {
+  name = var.resource_group_name
 }
 
 resource "azurerm_container_group" "example" {
   name                = "example-container-group"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  location            = data.azurerm_resource_group.example.location
+  resource_group_name = data.azurerm_resource_group.example.name
   ip_address_type     = "public"
   dns_name_label      = "example-container-group"
   os_type             = "Linux" # Add the "os_type" attribute with a valid value
